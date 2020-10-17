@@ -104,3 +104,19 @@ function snekEatsSnak() {
     redrawApple()
   }
 }
+
+function snakeHitsWall() {
+  //TODO: needs to check if snake is touching edge of canvas
+}
+
+function snakeEatsSelf() {
+  //TODO: needs to check if snake eats himself
+}
+
+function gameOver() {
+  //TODO: should wipe canvas and display game over message
+}
+
+function levelPicker() {
+  //TODO: lets user choose desired level adn set speed of snake
+}
