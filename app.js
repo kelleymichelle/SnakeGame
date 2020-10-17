@@ -68,6 +68,7 @@ function draw() {
     context.fillRect(snake[i].x, snake[i].y, snakeLink, snakeLink)
   }
   renderApple()
+  snekEatsSnak()
 }
 
 function gameControl(e) {
@@ -98,5 +99,7 @@ function redrawApple() {
 }
 
 function snekEatsSnak() {
-  
+  if ( ( Math.abs(snake[0].x - apple.x) <= 15 ) && ( Math.abs(snake[0].y - apple.y) <= 15 ) ) {
+    console.log("snake eats apple")
+  }
 }
