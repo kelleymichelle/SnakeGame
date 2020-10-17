@@ -45,7 +45,7 @@ window.onload = () => {
 }
 
 function addCanvas() {
-    document.querySelector('body').innerHTML = '<canvas id="canvas" width="1000" height="800"></canvas>'
+    document.querySelector('body').innerHTML = '<canvas id="canvas" width="1000" height="800"></canvas> <div id="reload"><h1>Game Over</h1><button type="submit" onClick="window.location.reload()">Play Again</button></div>'
 
     canvas = document.getElementById('canvas')
     context = canvas.getContext("2d")
@@ -110,10 +110,10 @@ function renderApple() {
     // context.arc(apple.x, apple.y, 13, 0, Math.PI * 2, true)
     // context.fill()
 
-    context.font = '32px serif'
+    context.font = '30px serif'
 // use these alignment properties for "better" positioning
-    context.textAlign = "center"; 
-    context.textBaseline = "middle"; 
+    // context.textAlign = "center"; 
+    // context.textBaseline = "middle"; 
     // draw the emoji
     context.fillText('🍎', apple.x, apple.y)
 }
@@ -149,17 +149,16 @@ function snakeEatsSelf() {
 
 function gameOver() {
     clearInterval(intervalID)
-
-    context.font = '150px sans-serif';
-    context.fillStyle = "lime"
-    context.fillText('Game Over', 500, 390);
-
+    
+    // context.font = '150px sans-serif';
+    // // context.textAlign = "center"; 
+    // // context.textBaseline = "middle"; 
+    // context.fillText('Game Over', 500, 390);
+    
     let score = snake.length - 6
     context.font = '100px sans-serif';
+    context.fillStyle = "lime"
     context.fillText(`Score: ${score}`, 350, 500);   
-   
-}
-
-function playAgain() {
-
+    
+    document.getElementById('reload').style.display = 'block'
 }
