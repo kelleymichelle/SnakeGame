@@ -3,11 +3,11 @@ body {
 }
 
 #canvas {
-    background-color: #364182;
+    /* background-color: #364182; */
     border: 3px solid blue;
     margin-right: 15%;
     margin-left: 15%;
     margin-top: 5%;
-    height: 70vh;
-    width: 70vw;
+    height: 800px;
+    width: 1000px;
 }
