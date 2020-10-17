@@ -2,18 +2,18 @@ let canvas
 let context
 let direction = null
 const snakeLink = 20
-const tagsale = '#364182'
+const tagsale = '#364182' //JOHNTRAVOLTA:
 
 let apple = {x: '', y: ''}
 const appleSlice = 10
 
 let snake = [
-  { x: 400, y: 300},
-  { x: 380, y: 300},
-  { x: 360, y: 300},
-  { x: 340, y: 300},
-  { x: 320, y: 300},
-  { x: 300, y: 300},
+    { x: 400, y: 300},
+    { x: 380, y: 300},
+    { x: 360, y: 300},
+    { x: 340, y: 300},
+    { x: 320, y: 300},
+    { x: 300, y: 300},
 ]
 
 let frames = null
@@ -57,63 +57,64 @@ function addCanvas() {
 
   context.fillStyle = tagsale
   context.fillRect(0, 0, canvas.width, canvas.height)
+
 }
 
 function draw() {
-  context.fillStyle = tagsale
-  context.fillRect(0, 0, canvas.width, canvas.height)
+    context.fillStyle = tagsale
+    context.fillRect(0, 0, canvas.width, canvas.height)
 
-  if (direction) {
+    if (direction) {
 
-    let snakeCopy = snake.map(part => {
-      return {...part}
-    })
+        let snakeCopy = snake.map(part => {
+        return {...part}
+        })
 
-    if (direction === 'UP') {
-      snake[0].y -= snakeLink
-    } else if (direction === 'DOWN') {
-      snake[0].y += snakeLink
-    } else if (direction === 'LEFT') {
-      snake[0].x -= snakeLink
-    } else if (direction === 'RIGHT') {
-      snake[0].x += snakeLink
+        if (direction === 'UP') {
+        snake[0].y -= snakeLink
+        } else if (direction === 'DOWN') {
+        snake[0].y += snakeLink
+        } else if (direction === 'LEFT') {
+        snake[0].x -= snakeLink
+        } else if (direction === 'RIGHT') {
+        snake[0].x += snakeLink
+        }
+
+        for (let i = 1; i < snake.length; i++) {
+        snake[i] = snakeCopy[i - 1]
+        }
     }
 
-    for (let i = 1; i < snake.length; i++) {
-      snake[i] = snakeCopy[i - 1]
+    for (let i = 0; i < snake.length; i++) {
+        // console.log("should draw snake")
+        context.fillStyle = 'magenta'
+        context.fillRect(snake[i].x, snake[i].y, snakeLink, snakeLink)
     }
-
-  }
-
-  for (let i = 0; i < snake.length; i++) {
-    // console.log("should draw snake")
-    context.fillStyle = 'magenta'
-    context.fillRect(snake[i].x, snake[i].y, snakeLink, snakeLink)
-  }
-  renderApple()
-  snekEatsSnak()
-  snakeHitsWall()
+    renderApple()
+    snekEatsSnak()
+    snakeHitsWall()
+    snakeEatsSelf()
 }
 
 function gameControl(e) {
   
-  if (e.keyCode === 38) {
-    direction = 'UP'
-  } else if (e.keyCode === 40) {
-    direction = 'DOWN'
-  } else if (e.keyCode === 37) {
-    direction = 'LEFT'
-  } else if (e.keyCode === 39) {
-    direction = 'RIGHT'
-  }
+    if (e.keyCode === 38) {
+        direction = 'UP'
+    } else if (e.keyCode === 40) {
+        direction = 'DOWN'
+    } else if (e.keyCode === 37) {
+        direction = 'LEFT'
+    } else if (e.keyCode === 39) {
+        direction = 'RIGHT'
+    }
 
 }
 
 function renderApple() {
-  context.fillStyle = 'red'
-  context.beginPath()
-  context.arc(apple.x, apple.y, 13, 0, Math.PI * 2, true)
-  context.fill()
+    context.fillStyle = 'red'
+    context.beginPath()
+    context.arc(apple.x, apple.y, 13, 0, Math.PI * 2, true)
+    context.fill()
 }
 
 function redrawApple() {
@@ -130,14 +131,19 @@ function snekEatsSnak() {
 }
 
 function snakeHitsWall() {
-  //TODO: needs to check if snake is touching edge of canvas
     if (snake[0].x > canvas.width || snake[0].x < 0  || snake[0].y > canvas.height || snake[0].y < 0) {
         console.log('game over')
     }
 }
 
 function snakeEatsSelf() {
-  //TODO: needs to check if snake eats himself
+    let snakeHead = snake[0]
+
+    for (let i = 1; i < snake.length; i++) {
+        if(snakeHead.x === snake[i].x && snakeHead.y === snake[i].y) {
+            console.log("snake eats self")
+        }
+    }
 }
 
 function gameOver() {
