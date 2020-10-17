@@ -69,6 +69,7 @@ function draw() {
   }
   renderApple()
   snekEatsSnak()
+  snakeHitsWall()
 }
 
 function gameControl(e) {
@@ -95,18 +96,21 @@ function renderApple() {
 function redrawApple() {
   let appleX = Math.floor(Math.random() * (1000 - 20) + 20);
   let appleY = Math.floor(Math.random() * (800 - 20) + 20);
-  apple = {x: appleX, y: appleY}
+    apple = {x: appleX, y: appleY}
 }
 
 function snekEatsSnak() {
-  if ( ( Math.abs(snake[0].x - apple.x) <= 20 ) && ( Math.abs(snake[0].y - apple.y) <= 20 ) ) {
-    snake.push({x: null, y: null})
-    redrawApple()
-  }
+    if ( ( Math.abs(snake[0].x - apple.x) <= 20 ) && ( Math.abs(snake[0].y - apple.y) <= 20 ) ) {
+        snake.push({x: null, y: null})
+        redrawApple()
+    }
 }
 
 function snakeHitsWall() {
   //TODO: needs to check if snake is touching edge of canvas
+    if (snake[0].x > canvas.width || snake[0].x < 0  || snake[0].y > canvas.height || snake[0].y < 0) {
+        console.log('game over')
+    }
 }
 
 function snakeEatsSelf() {
