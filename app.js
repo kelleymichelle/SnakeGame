@@ -105,10 +105,17 @@ function gameControl(e) {
 }
 
 function renderApple() {
-    context.fillStyle = 'red'
-    context.beginPath()
-    context.arc(apple.x, apple.y, 13, 0, Math.PI * 2, true)
-    context.fill()
+    // context.fillStyle = 'red'
+    // context.beginPath()
+    // context.arc(apple.x, apple.y, 13, 0, Math.PI * 2, true)
+    // context.fill()
+
+    context.font = '32px serif'
+// use these alignment properties for "better" positioning
+    context.textAlign = "center"; 
+    context.textBaseline = "middle"; 
+    // draw the emoji
+    context.fillText('🍎', apple.x, apple.y)
 }
 
 function redrawApple() {
@@ -145,10 +152,14 @@ function gameOver() {
 
     context.font = '150px sans-serif';
     context.fillStyle = "lime"
-    context.fillText('Game Over', 100, 390);
+    context.fillText('Game Over', 500, 390);
 
     let score = snake.length - 6
     context.font = '100px sans-serif';
-    context.fillText(`Score: ${score}`, 300, 500);   
-    console.log(snake.length - 6)
+    context.fillText(`Score: ${score}`, 350, 500);   
+   
+}
+
+function playAgain() {
+
 }
