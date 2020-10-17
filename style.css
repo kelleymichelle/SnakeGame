@@ -3,21 +3,18 @@ body {
 }
 
 #canvas {
-    /* background-color: #364182; */
     border: 3px solid blue;
-    margin-right: 15%;
-    margin-left: 15%;
-    margin-top: 5%;
+    position: fixed;
+    top: 1%;
+    left: 10%;
     height: 800px;
     width: 1000px;
 }
 
 .level-selection {
     display: flex;
-    /* position: fixed; */
     margin-top: 40vh;
     justify-content: center;
-    /* left: 50%; */
 }
 
 .level {
