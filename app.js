@@ -3,8 +3,7 @@ let context
 let direction = null
 const snakeLink = 20
 let intervalID
-const tagsale = '#364182' //JOHNTRAVOLTA:
-
+const tagsale = '#364182'
 let apple = {x: '', y: ''}
 const appleSlice = 10
 
@@ -20,45 +19,39 @@ let snake = [
 let frames = null
 
 let levelOptions = {
-  'easy': 5,
-  'medium': 10,
-  'hard': 15
+    'easy': 8,
+    'medium': 18,
+    'hard': 28
 }
 
 window.onload = () => {
-  // addCanvas()
+    let levels = document.getElementsByClassName('level')
 
-  let levels = document.getElementsByClassName('level')
+    Array.from(levels).map(level => {
+        level.addEventListener('click', (e) => {
+            frames = levelOptions[e.target.id]
+            console.log(frames)
+            document.querySelector('.level-selection').remove()
+            addCanvas()
+            redrawApple()
+            
+            intervalID = setInterval(() => {
 
-  Array.from(levels).map(level => {
-    level.addEventListener('click', (e) => {
-
-      frames = levelOptions[e.target.id]
-      console.log(frames)
-      document.querySelector('.level-selection').remove()
-
-      addCanvas()
-      redrawApple()
-      
-      intervalID = setInterval(() => {
-
-        document.addEventListener('keydown', (e) => gameControl(e))
-        draw()
-      } , 1000/frames)
+                document.addEventListener('keydown', (e) => gameControl(e))
+                draw()
+            } , 1000/frames)
+        })
     })
-  })
-
 }
 
-
 function addCanvas() {
-  document.querySelector('body').innerHTML = '<canvas id="canvas" width="1000" height="800"></canvas>'
+    document.querySelector('body').innerHTML = '<canvas id="canvas" width="1000" height="800"></canvas>'
 
-  canvas = document.getElementById('canvas')
-  context = canvas.getContext("2d")
+    canvas = document.getElementById('canvas')
+    context = canvas.getContext("2d")
 
-  context.fillStyle = tagsale
-  context.fillRect(0, 0, canvas.width, canvas.height)
+    context.fillStyle = tagsale
+    context.fillRect(0, 0, canvas.width, canvas.height)
 
 }
 
@@ -99,7 +92,6 @@ function draw() {
 }
 
 function gameControl(e) {
-  
     if (e.keyCode === 38) {
         direction = 'UP'
     } else if (e.keyCode === 40) {
@@ -120,9 +112,9 @@ function renderApple() {
 }
 
 function redrawApple() {
-  let appleX = Math.floor(Math.random() * (1000 - 20) + 20);
-  let appleY = Math.floor(Math.random() * (800 - 20) + 20);
-    apple = {x: appleX, y: appleY}
+    let appleX = Math.floor(Math.random() * (1000 - 20) + 20);
+    let appleY = Math.floor(Math.random() * (800 - 20) + 20);
+        apple = {x: appleX, y: appleY}
 }
 
 function snekEatsSnak() {
@@ -149,7 +141,6 @@ function snakeEatsSelf() {
 }
 
 function gameOver() {
-  //TODO: should wipe canvas and display game over message
     clearInterval(intervalID)
 
     context.font = '150px sans-serif';
@@ -161,5 +152,3 @@ function gameOver() {
     context.fillText(`Score: ${score}`, 300, 500);   
     console.log(snake.length - 6)
 }
-
-
