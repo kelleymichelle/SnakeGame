@@ -99,7 +99,8 @@ function redrawApple() {
 }
 
 function snekEatsSnak() {
-  if ( ( Math.abs(snake[0].x - apple.x) <= 15 ) && ( Math.abs(snake[0].y - apple.y) <= 15 ) ) {
-    console.log("snake eats apple")
+  if ( ( Math.abs(snake[0].x - apple.x) <= 20 ) && ( Math.abs(snake[0].y - apple.y) <= 20 ) ) {
+    snake.push({x: null, y: null})
+    redrawApple()
   }
 }
