@@ -26,7 +26,7 @@ window.onload = () => {
   context.fillStyle = tagsale
   context.fillRect(0, 0, canvas.width, canvas.height);
 
-  let frames = 8
+  let frames = 15
 
   redrawApple()
   
