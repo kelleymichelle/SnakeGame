@@ -1,8 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Ranchers&display=swap');
+
 body {
     background-color: #ffc600;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#title {
+    margin-top: -40%;
+    margin-bottom: 10%;
+    font-size: 8em;
+    width: 100%;
+    font-family: 'Ranchers', cursive;
 }
 
 #canvas {
@@ -15,6 +25,7 @@ body {
 }
 
 .level-selection {
+    width: 100%;
     display: flex;
     /* margin-top: 40vh; */
     justify-content: center;
