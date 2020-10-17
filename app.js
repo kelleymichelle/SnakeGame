@@ -40,6 +40,28 @@ function draw() {
   context.fillStyle = tagsale
   context.fillRect(0, 0, canvas.width, canvas.height)
 
+  if (direction) {
+
+    let snakeCopy = snake.map(part => {
+      return {...part}
+    })
+
+    if (direction === 'UP') {
+      snake[0].y -= snakeLink
+    } else if (direction === 'DOWN') {
+      snake[0].y += snakeLink
+    } else if (direction === 'LEFT') {
+      snake[0].x -= snakeLink
+    } else if (direction === 'RIGHT') {
+      snake[0].x += snakeLink
+    }
+
+    for (let i = 1; i < snake.length; i++) {
+      snake[i] = snakeCopy[i - 1]
+    }
+
+  }
+
   for (let i = 0; i < snake.length; i++) {
     // console.log("should draw snake")
     context.fillStyle = 'magenta'
@@ -49,26 +71,32 @@ function draw() {
 }
 
 function gameControl(e) {
-  console.log(e.keyCode)
-  // up = 38
-  //down = 40
-  //left = 37
-  //right = 39
+  
+  if (e.keyCode === 38) {
+    direction = 'UP'
+  } else if (e.keyCode === 40) {
+    direction = 'DOWN'
+  } else if (e.keyCode === 37) {
+    direction = 'LEFT'
+  } else if (e.keyCode === 39) {
+    direction = 'RIGHT'
+  }
+
 }
 
 function renderApple() {
-
   context.fillStyle = 'red'
   context.beginPath()
-  context.arc(apple.x, apple.y, 10, 0, Math.PI * 2, true)
+  context.arc(apple.x, apple.y, 13, 0, Math.PI * 2, true)
   context.fill()
-
 }
 
 function redrawApple() {
-
   let appleX = Math.floor(Math.random() * (1000 - 20) + 20);
   let appleY = Math.floor(Math.random() * (800 - 20) + 20);
-
   apple = {x: appleX, y: appleY}
+}
+
+function snekEatsSnak() {
+  
 }
