@@ -17,22 +17,49 @@ let snake = [
     { x: 300, y: 300},
 ]
 
+let frames = null
+
+let levelOptions = {
+  'easy': 5,
+  'medium': 10,
+  'hard': 15
+}
+
 window.onload = () => {
+  // addCanvas()
 
-    canvas = document.getElementById('canvas')
-    context = canvas.getContext("2d")
+  let levels = document.getElementsByClassName('level')
 
-    context.fillStyle = tagsale
-    context.fillRect(0, 0, canvas.width, canvas.height);
+  Array.from(levels).map(level => {
+    level.addEventListener('click', (e) => {
 
-    let frames = 15
+      frames = levelOptions[e.target.id]
+      console.log(frames)
+      document.querySelector('.level-selection').remove()
 
-    redrawApple()
-    
-    intervalID = setInterval(() => {
+      addCanvas()
+      redrawApple()
+      
+      intervalID = setInterval(() => {
+
         document.addEventListener('keydown', (e) => gameControl(e))
         draw()
-    } , 1000/frames)
+      } , 1000/frames)
+    })
+  })
+
+}
+
+
+function addCanvas() {
+  document.querySelector('body').innerHTML = '<canvas id="canvas" width="1000" height="800"></canvas>'
+
+  canvas = document.getElementById('canvas')
+  context = canvas.getContext("2d")
+
+  context.fillStyle = tagsale
+  context.fillRect(0, 0, canvas.width, canvas.height)
+
 }
 
 function draw() {
@@ -130,6 +157,4 @@ function gameOver() {
     context.fillText('Game Over', 100, 390);   
 }
 
-function levelPicker() {
-  //TODO: lets user choose desired level adn set speed of snake
-}
+
