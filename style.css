@@ -5,9 +5,12 @@ body {
 #canvas {
     /* background-color: #364182; */
     border: 3px solid blue;
-    margin-right: 15%;
-    margin-left: 15%;
-    margin-top: 5%;
+    /* margin-right: 15%;
+    margin-left: 15%; */
+    position: fixed;
+    top: 1%;
+    left: 10%;
+    /* margin-top: 1%; */
     height: 800px;
     width: 1000px;
 }

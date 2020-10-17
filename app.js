@@ -154,7 +154,12 @@ function gameOver() {
 
     context.font = '150px sans-serif';
     context.fillStyle = "lime"
-    context.fillText('Game Over', 100, 390);   
+    context.fillText('Game Over', 100, 390);
+
+    let score = snake.length - 6
+    context.font = '100px sans-serif';
+    context.fillText(`Score: ${score}`, 300, 500);   
+    console.log(snake.length - 6)
 }
 
 
