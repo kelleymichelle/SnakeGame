@@ -2,6 +2,7 @@ let canvas
 let context
 let direction = null
 const snakeLink = 20
+let intervalID
 const tagsale = '#364182' //JOHNTRAVOLTA:
 
 let apple = {x: '', y: ''}
@@ -24,11 +25,11 @@ window.onload = () => {
     context.fillStyle = tagsale
     context.fillRect(0, 0, canvas.width, canvas.height);
 
-    let frames = 1
+    let frames = 15
 
     redrawApple()
     
-    setInterval(() => {
+    intervalID = setInterval(() => {
         document.addEventListener('keydown', (e) => gameControl(e))
         draw()
     } , 1000/frames)
@@ -106,7 +107,7 @@ function snekEatsSnak() {
 
 function snakeHitsWall() {
     if (snake[0].x > canvas.width || snake[0].x < 0  || snake[0].y > canvas.height || snake[0].y < 0) {
-        console.log('game over')
+        gameOver()
     }
 }
 
@@ -115,13 +116,18 @@ function snakeEatsSelf() {
 
     for (let i = 1; i < snake.length; i++) {
         if(snakeHead.x === snake[i].x && snakeHead.y === snake[i].y) {
-            console.log("snake eats self")
+            gameOver()
         }
     }
 }
 
 function gameOver() {
   //TODO: should wipe canvas and display game over message
+    clearInterval(intervalID)
+
+    context.font = '150px sans-serif';
+    context.fillStyle = "lime"
+    context.fillText('Game Over', 100, 390);   
 }
 
 function levelPicker() {
