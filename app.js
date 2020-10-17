@@ -45,7 +45,7 @@ window.onload = () => {
 }
 
 function addCanvas() {
-    document.querySelector('body').innerHTML = '<canvas id="canvas" width="1000" height="800"></canvas> <div id="reload"><h1>Game Over</h1><button type="submit" onClick="window.location.reload()">Play Again</button></div>'
+    document.querySelector('body').innerHTML = '<canvas id="canvas" width="1000" height="800"></canvas> <div id="reload"><div id="game-over"><h1>Game Over</h1><button type="submit" onClick="window.location.reload()">Play Again</button></div></div>'
 
     canvas = document.getElementById('canvas')
     context = canvas.getContext("2d")
