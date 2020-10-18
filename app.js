@@ -119,13 +119,13 @@ function renderApple() {
 }
 
 function redrawApple() {
-    let appleX = Math.floor(Math.random() * (1000 - 20) + 20);
-    let appleY = Math.floor(Math.random() * (800 - 20) + 20);
+    let appleX = Math.floor(Math.random() * (1000 - 20) + 5);
+    let appleY = Math.floor(Math.random() * (800 - 20) + 5);
         apple = {x: appleX, y: appleY}
 }
 
 function snekEatsSnak() {
-    if ( ( Math.abs(snake[0].x - apple.x) < 15 ) && ( Math.abs(snake[0].y - apple.y) <= 15 ) ) {
+    if ( ( Math.abs(snake[0].x - apple.x) < 20 ) && ( Math.abs(snake[0].y - apple.y) < 20 ) ) {
         // console.log(snake, apple)
         snake.push({x: null, y: null})
         redrawApple()
