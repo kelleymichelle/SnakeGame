@@ -53,6 +53,9 @@ body {
     left: 50vw; */
     width: 40vw;
     height: 40vh;
+    -webkit-box-shadow: 3px 3px 8px 8px #1f2858;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+    -moz-box-shadow:    3px 3px 8px 8px #1f2858;  /* Firefox 3.5 - 3.6 */
+    box-shadow:         3px 3px 8px 8px #1f2858;
 }
 
 #game-over {
@@ -60,6 +63,7 @@ body {
     justify-content: space-evenly;
     flex-direction: column;
     align-items: center;
+   
 }
 
 #game-over > h1 {
@@ -70,4 +74,7 @@ body {
 
 #game-over > button {
     width: 150px;
+    padding: 5px;
+    font-size: larger;
+    font-weight: bold;
 }
